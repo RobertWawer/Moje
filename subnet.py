@@ -4,12 +4,15 @@
 
 import ipaddress
 
-host = input("Podaj adres hosta wraz z maską:\n")
-inet = ipaddress.ip_interface(host)
-net = ipaddress.ip_network(host, False)
-print(f"Adres IP: {inet.ip}")
-print(f"Adres sieci: {inet.network}")
-print(f"Ilość hostów w sieci: {net.num_addresses-2}")
-print(f"Adres pierwszego hosta: {net[1]}")
-print(f"Adres ostatniego hosta: {net[-2]}")
-print(f"Adres rozgłoszeniowy: {net[-1]}")
+try:
+    host = input("Podaj adres hosta wraz z maską:\n")
+    inet = ipaddress.ip_interface(host)
+    net = ipaddress.ip_network(host, False)
+    print(f"Adres IP: {inet.ip}")
+    print(f"Adres sieci: {inet.network}")
+    print(f"Ilość hostów w sieci: {net.num_addresses-2}")
+    print(f"Adres pierwszego hosta: {net[1]}")
+    print(f"Adres ostatniego hosta: {net[-2]}")
+    print(f"Adres rozgłoszeniowy: {net[-1]}")
+except ValueError:
+    print("Wspisany adres nie jest zgodny z protokołem IPv4 i IPv6 ")
